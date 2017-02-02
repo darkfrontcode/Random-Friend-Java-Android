@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="name">Sort a random person</string>
+    <string name="description">and get his profile</string>
+    <string name="random">Random</string>
+    <string name="image">student image</string>
+</resources>
