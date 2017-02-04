@@ -20,42 +20,46 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
+        /** class */
+        class Person{
+
+            private String name;
+            private String description;
+            private Integer image;
+
+            private Person(String name, String description, Integer image){
+                this.name = name;
+                this.description = description;
+                this.image = image;
+            }
+
+            public String getName(){
+                return this.name;
+            }
+
+            public String getDescription(){
+                return this.description;
+            }
+
+            public Integer getImage(){
+                return this.image;
+            }
+
+        }
+
+
         /** settings */
-        final ArrayList<String> names = new ArrayList<String>();
-        names.add("Alexandre");
-        names.add("André");
-        names.add("Arthur");
-        names.add("Daniel");
-        names.add("Eduardo");
-        names.add("Guilherme");
-        names.add("Lourenço");
-        names.add("Marcos");
-        names.add("Renam");
-        names.add("Ueslei");
-
-        final ArrayList<String> descriptions = new ArrayList<String>();
-        descriptions.add("Pedreiro Peruâno");
-        descriptions.add("In love");
-        descriptions.add("Odeia o brasil");
-        descriptions.add("Gigante");
-        descriptions.add("Irreverente");
-        descriptions.add("My friend");
-        descriptions.add("Perdido na night");
-        descriptions.add("Dono/Patrão");
-        descriptions.add("Misterious man");
-        descriptions.add("Safadão");
-
-        final ArrayList<Integer> images = new ArrayList<Integer>();
-        images.add(R.drawable.alexandre);
-        images.add(R.drawable.andre);
-        images.add(R.drawable.arthur);
-        images.add(R.drawable.daniel);
-        images.add(R.drawable.eduardo);
-        images.add(R.drawable.guilherme);
-        images.add(R.drawable.lourenco);
-        images.add(R.drawable.marcos);
-        images.add(R.drawable.renam);
-        images.add(R.drawable.ueslei);
+        final ArrayList<Person> group = new ArrayList<>();
+        group.add(new Person("Alexandre","Pedreiro Peruâno", R.drawable.alexandre));
+        group.add(new Person("André","In love", R.drawable.andre));
+        group.add(new Person("Arthur","Odeia o brasil", R.drawable.arthur));
+        group.add(new Person("Daniel","Gigante", R.drawable.daniel));
+        group.add(new Person("Eduardo","Irreverente", R.drawable.eduardo));
+        group.add(new Person("Guilherme","My Friend", R.drawable.guilherme));
+        group.add(new Person("Lourenço","Perdido na night", R.drawable.lourenco));
+        group.add(new Person("Marcos","Dono/Patrão", R.drawable.marcos));
+        group.add(new Person("Renam","Um cara legal", R.drawable.renam));
+        group.add(new Person("Ueslei","Safadão", R.drawable.ueslei));
 
 
         /** instances */
@@ -74,28 +78,26 @@ public class MainActivity extends AppCompatActivity {
 
                     /** random number */
                     Random random = new Random();
-                    int shuffle = random.nextInt(names.size());
+                    int shuffle = random.nextInt(group.size());
 
-                    /** sets the image with the random position of array */
-                    image.setImageResource(images.get(shuffle));
+                    /** instance */
+                    Person sorted = group.get(shuffle);
 
-                    /** sets the name with the random position of array */
-                    name.setText(names.get(shuffle));
-
-                    /** sets the description with the random position of array */
-                    description.setText(descriptions.get(shuffle));
+                    /** setting stuffs */
+                    image.setImageResource(sorted.getImage());
+                    name.setText(sorted.getName());
+                    description.setText(sorted.getDescription());
 
                     /** check if arrayList still are populated */
-                    if(names.size() == 1){
+                    if(group.size() == 1){
 
                         /** remove button from screen */
                         button.setVisibility(View.INVISIBLE);
                     }else{
 
                         /** remove sorted from arrayLists */
-                        images.remove(shuffle);
-                        names.remove(shuffle);
-                        descriptions.remove(shuffle);
+                        group.remove(shuffle);
+
                     }
 
                 }
